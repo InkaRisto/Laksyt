@@ -1,5 +1,7 @@
 #Kirjoita ohjelma, joka kysyy käyttäjältä massan keskiaikaisten mittojen mukaan leivisköinä, nauloina
 #ja luoteina. Ohjelma muuntaa syötteen täysiksi kilogrammoiksi ja grammoiksi sekä ilmoittaa tuloksen käyttäjälle.
+import math
+math.floor(0)
 
 leivis = float(input('Anna leiviskät: '))
 naulat = float(input('Anna naulat: '))
@@ -11,6 +13,11 @@ gluodit = 13.3 * luodit
 
 massa = gnaulat + gleivis + gluodit
 kilo = massa / 1000
-print(f'Massa nykymittojen mukaan: \n {kilo: 7.2f} kilogrammaa ja{massa:7.2f} grammaa')
+gyli = massa - 1000
+
+if gyli<0:
+    gyli = 0
+
+print(f'Massa nykymittojen mukaan: \n {kilo: 7.2f} kilogrammaa ja{gyli:7.2f} grammaa')
 
 
