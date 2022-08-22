@@ -1,5 +1,18 @@
 import math
-sade = float(input('Syötä ympyrän säde:'))
+sade = int(input('Syötä ympyrän säde:'))
 
-ala = 'Pii'
+pii = int(math.pi)
+ala = (pii * sade) ^ 2
+
+print(f"{pii: 2.6f}")
+
+print('Ympyrän pinta-ala on:' +str(ala))
+
+
+
+
+
+
+
+
 
