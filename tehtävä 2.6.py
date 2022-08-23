@@ -5,8 +5,13 @@
 
 import random
 
-luku = random.randint(0,9)
+z = random.randint(0, 9)
+x =
 
-kolmikko = str('Numerosarjasi on' + str(luku) + str(luku) + str(luku))
+for luku in range(3):
+         print(luku)
 
-print(luku)
+
+
+
+
