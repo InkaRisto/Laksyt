@@ -1,3 +1,3 @@
 nimi = input('Kuka olet?')
 
-print('Terve, ' + nimi+ '!')
+print('Terve, ' + nimi + '!')

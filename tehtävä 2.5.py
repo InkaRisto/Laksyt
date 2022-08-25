@@ -12,9 +12,13 @@ gleivis = leivis * (20*32*13.3)
 
 massa = gnaula + gleivis + gluoti
 kilo = massa / 1000
-gyli = massa - math.floor(kilo)*1000
+gyli = massa % 1000 #jakojäännös
 
+# Toinen tapa laskea
+naulat = leivis * 20 + naulat # Leiviskät nauloina
+luodit = naulat * 32 + luodit # Naulat luoteina
+grammat = luodit * 13.3 # Luodit grammoina
 
-print(f'Massa ({massa}) nykymittojen mukaan: \n {kilo: 7.0f} kilogrammaa ja {gyli:7.2f} grammaa')
+print(f'Massa ({massa}) nykymittojen mukaan: \n {math.floor(kilo): .0f} kilogrammaa ja {gyli:.2f} grammaa')
 
 

@@ -17,15 +17,4 @@ for i in range (4):
 print(kolmikko)
 print(neljä)
 
-
-
 #En tykkää outputin ulkomuodosta, mutta en saanut listoja toimimaan nätisti Pythonilla. Dartilla oli toString...
-
-
-
-
-
-
-
-
-
