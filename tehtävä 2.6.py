@@ -5,13 +5,27 @@
 
 import random
 
-luku = random.randint(0, 9)
-luku_2 = random.randint(0, 9)
-luku_3 = random.randint(0, 9)
+kolmikko = []
+neljä = []
 
+for i in range (3):
+    kolmikko.append(random.randint(0, 9))
 
-
-kolmikko = str('Numerosarjasi on ' + str(luku) + str(luku_2) + str(luku_3))
-kuusikko =
+for i in range (4):
+    neljä.append(random.randint(1, 6))
 
 print(kolmikko)
+print(neljä)
+
+
+
+#En tykkää outputin ulkomuodosta, mutta en saanut listoja toimimaan nätisti Pythonilla. Dartilla oli toString...
+
+
+
+
+
+
+
+
+
