@@ -2,6 +2,7 @@
 # ja hemoglobiiniarvon (g/l). Ohjelma ilmoittaa, onko hemoglobiiniarvo alhainen, normaali vai korkea.
 
 sex = input('Anna biologinen sukupuoli (N/M): ')
+
 hemo = int(input('Anna hemoglobiiniarvo (g/l): '))
 
 if sex == 'N' or sex == 'n':
