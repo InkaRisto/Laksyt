@@ -13,4 +13,4 @@ elif cabin == 'B' or cabin == 'b':
 elif cabin == 'C' or cabin == 'c':
     print('C on ikkunaton hytti autokannen alapuolella.')
 else:
-    print('Virhe: Hyttiluokkaa ei tunneta.')
+    print('Virheellinen hyttiluokka')
