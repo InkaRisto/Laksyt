@@ -20,6 +20,8 @@ elif sex == 'M' or sex == 'm':
     elif hemo > 195:
         print('Hemoglobiiniarvo on korkea.')
 
+else:
+    print('Tapahtui virhe.')
 
 
 
