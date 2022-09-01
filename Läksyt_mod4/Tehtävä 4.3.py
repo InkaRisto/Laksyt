@@ -19,3 +19,4 @@ print('Ohjelma on päättynyt.')
 
 if min != 1 and max != 1:
     print(f'Pienin syöttämäsi luku on {min} ja suurin on {max}')
+
