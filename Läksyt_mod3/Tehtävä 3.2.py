@@ -2,15 +2,16 @@
 # Tulostaa sen sanallisen kuvauksen
 # Tehtävässä on käytettävä if/elif/else-
 
-cabin = input('Syötä hyttiluokka: ')
+put = input('Syötä hyttiluokka: ')
+cabin = put.lower()
 
-if cabin == 'LUX' or cabin == 'lux':
+if cabin == 'lux':
     print('LUX on parvekkeellinen hytti yläkannella.')
-elif cabin == 'A' or cabin == 'a':
+elif cabin == 'a':
     print('A on ikkunallinen hytti autokannen yläpuolella.')
-elif cabin == 'B' or cabin == 'b':
+elif cabin == 'b':
     print('B on ikkunaton hytti autokannen yläpuolella.')
-elif cabin == 'C' or cabin == 'c':
+elif cabin == 'c':
     print('C on ikkunaton hytti autokannen alapuolella.')
 else:
     print('Virheellinen hyttiluokka')
