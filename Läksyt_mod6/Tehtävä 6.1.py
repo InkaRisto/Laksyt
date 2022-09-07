@@ -1,3 +1,6 @@
+# Kirjoita parametriton funktio, joka palauttaa paluuarvonaan satunnaisen nopan silmäluvun 1..6.
+# Kirjoita pääohjelma, joka heittää noppaa kunnes tulee kuutonen.
+# Pääohjelma tulostaa kunkin heiton jälkeen saadun silmäluvun.
 import random
 
 def roll():
@@ -5,11 +8,11 @@ def roll():
 
 def printIt():
     print(die)
+    return
 
-while roll() != 6:
+while True:
     die = roll()
     printIt()
 
-    if roll() == 6:
-        printIt()
+    if die == 6:
         break
