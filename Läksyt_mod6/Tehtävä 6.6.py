@@ -6,16 +6,19 @@
 # Yksikköhintojen laskennassa on hyödynnettävä kirjoitettua funktiota.
 import math
 
+
 def pizzaCalc(size, price):
     A = (size/2)**2 * math.pi
     sqm = A/10000
     per = price / sqm
     return per
 
+
 def info():
     diam = float(input('Mikä on pizzan halkaisija (cm)? '))
     euro = float(input('Paljonko pizza maksaa? '))
     return diam, euro
+
 
 pizza1 = diam, euro = info()
 pizza2 = diam2, euro2 = info()

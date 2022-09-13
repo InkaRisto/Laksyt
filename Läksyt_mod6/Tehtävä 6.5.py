@@ -11,7 +11,8 @@ def sort(evens):
             fixed.append(n)
     return fixed
 
-numbers = [2,3,4,5,6,7]
+
+numbers = [20,21,22,23,24,25,35,36,74,75,877,965,1000]
 
 print(numbers)
 print(sort(numbers))

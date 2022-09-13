@@ -5,19 +5,18 @@
 # joka kysytään käyttäjältä ohjelman suorituksen alussa.
 import random
 
-def roll(d):
-    return random.randint(1, d)
+def roll(die):
+    return random.randint(1, die)
 
-def printIt():
-    print(die)
+# def printIt():
+#   print(roll)
+#   return
 
-d = int(input('Montako sivua noppaan? '))
+userDie = int(input('Montako sivua noppaan? '))
+# Miksi ei suostu kutsumaan parametrina??? ^^^^
+while True:
+    rolled = roll(userDie)
+    print(rolled)
 
-while roll(d) != d:
-    die = roll(d)
-    printIt()
-    if roll(d) == d:
+    if rolled == userDie:
         break
-
-if roll(d) == d:
-       printIt()

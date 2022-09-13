@@ -5,7 +5,7 @@ def check_it(userInput):
     if userInput == 2 or userInput == 3:
         return True
     else:
-        for i in range(2, int(userInput/2) + 1):
+        for i in range(2, int(userInput/2)):
             if (userInput % i) == 0:
                 return False
                 # Mallinnettu netistä

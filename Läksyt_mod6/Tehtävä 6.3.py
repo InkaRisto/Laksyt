@@ -13,7 +13,6 @@ userInput = float(input('Paljonko polttoainetta gallonoina? (Negatiivinen luku l
 
 while userInput > 0:
 
-    print(f'{userInput} gallonia polttoainetta vastaa {convert(userInput):.3f} litraa')
-    print('')
+    print(f'{userInput} gallonaa polttoainetta vastaa {convert(userInput):.3f} litraa\n')
+    # print('')
     userInput = float(input('Paljonko polttoainetta gallonoina? '))
-
