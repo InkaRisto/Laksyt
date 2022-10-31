@@ -10,10 +10,11 @@ class Car:
         self.speed = 0
         self.driven = 0
         Car.cars += 1
+        self.wins = 0
 
     def print_data(self):
         print(f'Auton rekisterinumero on {self.register_num} ja huippunopeus on {self.top}. '
-              f'Matkustettu {self.driven} km ja nopeus nyt on {self.speed} km/h.')
+              f'Matkustettu {self.driven} km ja nopeus nyt on {self.speed} km/h. (Voittoja: {self.wins})')
 
     def speed_up(self, change):
         if 0 < self.speed + change <= self.top:
@@ -40,18 +41,23 @@ for i in range(10):
     top_speed = random.randint(100, 200)
     racers.append(Car(register, top_speed))
 
-finished = False
-while not finished:
-    move = 0
-    for move in range(Car.cars):
-        car = racers[move]
-        if car.driven < 10000:
-            speed_change = random.randint(-10, 15)
-            car.speed_up(speed_change)
-            car.drive(1)
-            move += 1
-        elif car.driven >= 10000:
-            print_result()
-            finished = True
-            break
+for r in range(100000):
+    for car in racers:
+        car.driven = 0
+        car.speed = 0
+    finished = False
+    while not finished:
+        for move in range(Car.cars): # for car in racers <<< Ei tarvitse staattista muuttujaa.
+            car = racers[move]
+            if car.driven < 10000:
+               speed_change = random.randint(-10, 15)
+               car.speed_up(speed_change)
+               car.drive(1)
+               move += 1
+            elif car.driven >= 10000:
+                car.wins += 1
+                print_result()
+                finished = True
+                break
+
 
