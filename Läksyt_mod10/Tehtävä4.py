@@ -27,13 +27,12 @@ class Race:
         self.racers = car_list
 
     def one_hour(self):
-        Car.speed_up(random.randint(-10, 15))
-        Car.drive(1)
-        #^^^ Vaatii lisää parametrejä???? Kaataa koko ohjelman.
+        for car in self.racers:
+            car.speed_up(random.randint(-10, 15))
+            car.drive(1)
 
     def print_current(self):
-        for c in self.racers:
-            the_car = racers[c]
+        for the_car in self.racers:
             print(f'Auton rekisterinumero on {the_car.register_num} ja huippunopeus on {the_car.top}. '
                f'Matkustettu {the_car.driven} km ja nopeus nyt on {the_car.speed} km/h.')
 
@@ -56,5 +55,6 @@ finished = False
 while not finished:
     for r in racers:
         rally.one_hour()
-        rally.race_over()
+        if rally.race_over():
+            finished = True
 
