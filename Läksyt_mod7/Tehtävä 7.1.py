@@ -5,8 +5,6 @@
 
 vuodenajat = {}
 
-
-
 def scan(kk, vuodenajat):
     vuodenajat['talvea'] = (12, 1, 2)
     vuodenajat['kevättä'] = (3, 4, 5)
@@ -18,10 +16,14 @@ def scan(kk, vuodenajat):
             return n
 
 
+
 kk = int(input('Syödä kuukauden numero: '))
 season = scan(kk, vuodenajat)
 
-print(f'{kk}. kuukausi on osa {season}.')
+if 0 < kk < 13:
+    print(f'{kk}. kuukausi on osa {season}.')
+else:
+    print('Tapahtui virhe!')
 
 
 

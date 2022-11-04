@@ -27,9 +27,13 @@ def haku():
     kursori.execute(sql)
 
     response = kursori.fetchall()
-    return response
+    if kursori.rowcount > 0:
+        return response
+    else:
+        print('Kenttää ei löydy kannasta.')
 
-print('Lasketaan kahden lentokentän etäisyys!\n')
+print('\n Lasketaan kahden lentokentän etäisyys!')
+
 loc1 = haku()
 loc2 = haku()
 gap = distance.distance(loc1,loc2).km

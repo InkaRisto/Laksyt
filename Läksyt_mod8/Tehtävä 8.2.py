@@ -15,6 +15,7 @@ yhteys = mysql.connector.connect(
          )
 
 code = input('Syötä kaksikirjaiminen maakoodi: ')
+# code = code.upper()
 sql = 'SELECT type, COUNT(*) FROM airport WHERE iso_country = "' + code + '" GROUP BY TYPE;'
 kursori = yhteys.cursor()
 kursori.execute(sql)

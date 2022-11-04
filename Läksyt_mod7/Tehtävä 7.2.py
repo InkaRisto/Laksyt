@@ -19,3 +19,6 @@ while True:
     else:
         print('Uusi nimi.')
         names.add(uname)
+
+for n in names:
+    print(n)
