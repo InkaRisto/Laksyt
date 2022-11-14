@@ -17,7 +17,7 @@ class Car:
         self.odometer += self.speed * hours
 
     def print_driven(self):
-        print(f'Autolla ajettu {self.odometer} kilometriä.')
+        print(f'Autolla {self.register_num} ajettu {self.odometer} kilometriä.')
 
 
 class Electric(Car):

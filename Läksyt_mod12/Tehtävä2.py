@@ -15,6 +15,6 @@ try:
     else:
         print(f' Virhe! {response}')
 
-except requests.exceptions.RequestException as er:\
+except requests.exceptions.RequestException as er:
     print(f'Haku epäonnistui. Error {er}')
 

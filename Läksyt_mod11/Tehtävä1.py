@@ -9,12 +9,12 @@ class Publication:
 class Book(Publication):
     def __init__(self, name, author, pages):
         super().__init__(name)
-        self.pageCount = pages
+        self.page_count = pages
         self.author = author
 
     def print_info(self):
         super().print_info()
-        print(f'Kirjailija: {self.author}\nSivumäärä: {self.pageCount}\n')
+        print(f'Kirjailija: {self.author}\nSivumäärä: {self.page_count}\n')
 
 
 class Magazine(Publication):
