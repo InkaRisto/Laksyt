@@ -1,8 +1,8 @@
 'use strict';
 
-let howManyCandi, candidates, people;
-howManyCandi = parseInt(prompt('Montako ehdokasta kirjataan?'));
-candidates = [];
+let people;
+const howManyCandi = parseInt(prompt('Montako ehdokasta kirjataan?'));
+let candidates = [];
 
 for(let i = 1; i < howManyCandi+1; i++){
   people = prompt(`Syötä ehdokkaan ${i} nimi:`);
@@ -11,21 +11,25 @@ for(let i = 1; i < howManyCandi+1; i++){
 
 let voters = prompt('Montako äänestäjää?');
 
-for (let i = 0; i < voters; i++){
-  let vote = prompt('Syötä ehdokkaasi nimi:');
-    for(let n in candidates){
-      if(candidates[n].name === vote){
-        candidates[n].votes = candidates[n].votes + 1;
-      }
+function getIndexofCandidate (name){
+  for(let i=0; i < candidates.length; i++){
+    if (candidates[i].name === name){
+      return i
     }
+      }
+    return false}
 
+for (let i = 0; i < voters; i++){
+  let vote = prompt(`Äänestäjä ${i+1}, syötä ehdokkaasi nimi:`);
+    const candidateIdx = getIndexofCandidate(vote);
+  if (candidateIdx !== false){
+    candidates[candidateIdx].votes++
+  }}
 
-  }
-
-candidates.sort((a,b) => b-a);
+candidates.sort((a,b) => b.votes-a.votes);
   console.log(`Voittaja on ${candidates[0].name}, ${candidates[0].votes} äänellä`);
   console.log('Äänimäärät:');
 
-for(let i in candidates){
-  console.log(candidates[i].name + ': ' + candidates[i].votes + ' ääntä');
+for(const candidate of candidates){
+  console.log(candidate.name + ': ' + candidate.votes + ' ääntä');
 }
