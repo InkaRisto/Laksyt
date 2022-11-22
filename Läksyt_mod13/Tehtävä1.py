@@ -3,7 +3,6 @@ import json
 
 app = Flask(__name__)
 
-
 @app.route('/prime/<number>')
 def prime(number):
     try:

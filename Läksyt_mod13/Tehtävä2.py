@@ -32,10 +32,10 @@ def get_name(icao):
                 "Municipality": municip
             }
         else:
-            statuscode = 400
-            response = {
-                "Status": statuscode,
-                "Message": "Unrecognized ICAO-code"}
+           statuscode = 500
+           response = {
+              "Status": statuscode,
+              "Message": "Unrecognized ICAO-code"}
 
     # ValueError ei toimi
     except ValueError:
@@ -44,7 +44,6 @@ def get_name(icao):
             "Status": statuscode,
             "Message": "Unrecognized ICAO-code"
         }
-
 
     jsonrespo = json.dumps(response)
     return Response(response=jsonrespo, status=statuscode)
