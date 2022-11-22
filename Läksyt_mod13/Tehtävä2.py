@@ -13,16 +13,12 @@ link = mysql.connector.connect(
 
 app = Flask(__name__)
 
-@app.route('/airport/<icao>')
-def get_name(icao):
+def get_info(icao):
     try:
         icao = str.upper(icao)
-        statuscode = 200
-
         mycursor = link.cursor()
-        mycursor.execute('SELECT NAME, municipality FROM airport WHERE ident = "'+ icao +'";')
+        mycursor.execute('SELECT NAME, municipality FROM airport WHERE ident = "' + icao + '";')
         find = mycursor.fetchone()
-
         if find != None:
             name = find[0]
             municip = find[1]
@@ -31,18 +27,28 @@ def get_name(icao):
                 "Name": name,
                 "Municipality": municip
             }
-        else:
-           statuscode = 500
-           response = {
-              "Status": statuscode,
-              "Message": "Unrecognized ICAO-code"}
+            return response
+    except:
+        status=404
+        response = {
+            "Error": status,
+            "Message": "ICAO not found"}
 
-    # ValueError ei toimi
-    except ValueError:
+        return Response(response=json.dumps(response), status=404)
+
+
+@app.route('/airport/<icao>')
+def get_name(icao):
+    try:
+        statuscode = 200
+        airport = get_info(icao)
+        return airport
+
+    except:
         statuscode = 400
         response = {
             "Status": statuscode,
-            "Message": "Unrecognized ICAO-code"
+            "Message": "Unrecognized ICAO-code2"
         }
 
     jsonrespo = json.dumps(response)

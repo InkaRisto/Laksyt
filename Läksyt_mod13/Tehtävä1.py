@@ -3,15 +3,12 @@ import json
 
 app = Flask(__name__)
 
+
 @app.route('/prime/<number>')
 def prime(number):
     try:
-        number = float(number)
+        number = int(number)
         statuscode = 200
-        sendoff = {
-            "number": number,
-            "isPrime": False
-        }
 
         if check_it(number):
             sendoff = {"number": number, "isPrime": True}
@@ -25,18 +22,18 @@ def prime(number):
             "teksti": "Oliko arvo varmasti numero?"
         }
 
-    jsonvast = json.dumps(sendoff)
-    return Response(response=jsonvast, status=statuscode, mimetype="application/json")
+    jsonrespo = json.dumps(sendoff)
+    return Response(response=jsonrespo, status=statuscode, mimetype="application/json")
 
 
 @app.errorhandler(404)
 def page_not_found(virhekoodi):
     sendoff = {
         "status": "404",
-        "teksti": "Virheellinen pääte"
+        "teksti": "Virheellinen osoite"
     }
-    jsonvast = json.dumps(sendoff)
-    return Response(response=jsonvast, status=404)
+    jsonrespo = json.dumps(sendoff)
+    return Response(response=jsonrespo, status=404)
 
 
 def check_it(number):
@@ -45,10 +42,6 @@ def check_it(number):
     else:
         for i in range(2, int(number / 2)):
             if (number % i) == 0:
-                return False
-            elif (number % 3) == 0:
-                return False
-            elif (number % 5) == 0:
                 return False
             else:
                 return True
