@@ -94,21 +94,17 @@ const picArray = [
 
 // add your code here
 
-function CreateList(){
-    let art = document.createElement('article');
-      for (let i = 0; i++; i < picArray.length){
-      let data = picArray[i];
-      art.innerHTML= `<h2>${data['title']}</h2>
-        <figure><img src="${data['image']['medium']}" alt="${data['title']}">
-        <figcaption>${data['caption']}</figcaption>
-        </figure>
-        <p>${data['description']}</p>`;
-   }
-    return art;
-}
-
 const sect = document.querySelector('#pictures');
-const listed  = CreateList(picArray);
-sect.appendChild(listed);
+let art = document.createElement('article');
+for (let i = 0; i++; i < picArray.length) {
+  let data = picArray[i];
+  art.innerHTML = `<h2>${data['title']}</h2>
+  <figure><img src="${data['image']['medium']}" alt="${data['title']}">
+  <figcaption>${data['caption']}</figcaption>
+  </figure>
+  <p>${data['description']}</p>`;
+  sect.appendChild(art);
+  }
+
 
 
