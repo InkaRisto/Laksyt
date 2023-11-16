@@ -10,24 +10,22 @@ class Auto{
 private:
 	//Auton ominaisuudet
 	string _rekkari;
-	int _nopeus_max;
-	int _nopeus_nyt;
-	int _matka;
+	double _nopeus_max;			//int muutettiin double
+	double _nopeus_nyt = 0;
+	double _matka = 0;
 
 public:
 	Auto(const string& rekisteri, int top) {
 		//Alustaja, joka asettaa ominaisuuksista kaksi ensin mainittua parametreina saatuihin arvoihin
 		_rekkari = rekisteri;
 		_nopeus_max = top;
-		_nopeus_nyt = 0;
-		_matka = 0;
 	}
 
-	tuple<string, int, int, int> V‰lit‰_tiedot() const {
+	tuple<string, int, int, int> Valita_tiedot() const {
 		return { _rekkari, _nopeus_max, _nopeus_nyt, _matka };
 	}
 
-	/*int Tulosta_tiedot() {
+	/*int Tulosta_tiedot() const {
 		cout << "Rekisteritunnus: " << _rekkari << "\n";
 		cout << "Huippunopeus: " << _nopeus_max << "\n";
 		cout << "T‰m‰nhetkinen nopeus: " << _nopeus_nyt << "\n";
@@ -36,10 +34,10 @@ public:
 		return 0;
 	} */
 
-	int Kiihdyt‰(int muutos) {
+	void Kiihdyta(int muutos) {
 		//kiihdyt‰-j‰senfunktio, joka saa parametrinaan nopeuden muutoksen (km/h)
 		if (_nopeus_nyt + muutos > 0){
-			_nopeus_nyt = _nopeus_nyt + muutos;
+			_nopeus_nyt += muutos;
 		}
 
 		if (_nopeus_nyt + muutos > _nopeus_max) {
@@ -49,10 +47,9 @@ public:
 		if (_nopeus_nyt + muutos < 0){
 			_nopeus_nyt = 0;
 		}
-		return 0;
 	}
 
-	int Kulje(int aika) {
+	int Kulje(double aika) {
 		//kasvattaa kuljettua matkaa sen verran kuin auto on tasaisella vauhdilla annetussa tuntim‰‰r‰ss‰ edennyt
 		int vauhti = _nopeus_nyt;
 		int kuljettu = _nopeus_nyt * aika;
@@ -80,25 +77,21 @@ int main() {
 	while (true) {
 		for (Auto& a : autot) {
 			int vauhti = get_random_number(-10, 15);
-			a.Kiihdyt‰(vauhti);
+			a.Kiihdyta(vauhti);
 			a.Kulje(1);
-			tuple<string, int, int, int> tiedot = a.V‰lit‰_tiedot();
+			tuple<string, int, int, int> tiedot = a.Valita_tiedot();
 
 			if (get<3>(tiedot) >= 10000) {
-				// Race is over, print results
 				cout << "Kisa ohi! Lopputulos:\n";
 				for (const Auto& alus : autot) {
-					tuple<string, int, int, int> tiedot_alus = alus.V‰lit‰_tiedot();
+					tuple<string, int, int, int> tiedot_alus = alus.Valita_tiedot();
 					cout << "Rekisteritunnus: " << get<0>(tiedot_alus) << "| Huippunopeus: " << get<1>(tiedot_alus)
 						<< "| Tamanhetkinen nopeus: " << get<2>(tiedot_alus) << "| Kuljettu matka: " << get<3>(tiedot_alus) << "\n";
 				}
-				return 0; // End the program
+				return 0; 
 			}
 
 		}
-
-
-
 	}
 		
 	/*
@@ -111,7 +104,7 @@ int main() {
 	a1.Kiihdyt‰(-200);
 	a1.Kulje(0.5);
 
-	tuple<string, int, int, int> tiedot = a1.V‰lit‰_tiedot();
+	tuple<string, int, int, int> tiedot = a1.V‰lita_tiedot();
 
 	// Tulosta p‰‰ohjelmassa sen j‰lkeen luodun auton kaikki ominaisuudet
 	cout << "Rekisteritunnus: " << get<0>(tiedot) << "\n";
