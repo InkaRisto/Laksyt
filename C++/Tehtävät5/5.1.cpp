@@ -21,7 +21,6 @@ public:
 		if (tuntiviisari) {
 			_arvo = (_arvo + 1) % 24;
 		}
-
 		else {
 			_arvo = (_arvo + 1) % 60;
 		}
@@ -65,21 +64,21 @@ public:
 		cout << "\n";
 	}
 	void kay() {
-		//Haluaisin lisätä tähän myös h,m,s 
+		//Järkevämpi tapa olisi suorittaa yksi kerrallaan; sekunnit, kunnes on pyörähtänyt, sitten minuutit, sekunnit
 		tunnit->Etene(true);
 		minuutit->Etene(false);
 		sekunnit->Etene(false);
 	}
 };
 
-int main() {
-	Kello rolex(14, 19, 60);
-	while (1)
-	{
-		rolex.kay();
-		rolex.nayta();
-		std::this_thread::sleep_for(1000ms);// nukkuu yhden sekunnin
-	}
-
-	return 0;
-}
+//int main() {
+//	Kello rolex(14, 19, 60);
+//	while (1)
+//	{
+//		rolex.kay();
+//		rolex.nayta();
+//		std::this_thread::sleep_for(1000ms);// nukkuu yhden sekunnin
+//	}
+//
+//	return 0;
+//}

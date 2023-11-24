@@ -7,31 +7,30 @@ using namespace std;
 class Viisari {
 private:
 	unsigned _arvo;
+	int _max; //Kiertoon hyödyllinen
 	Viisari* _seuraava;
+
 
 public:
 	//Konstruktori; 0-alustus ei toiminut
-	Viisari(unsigned int alustus_arvo, Viisari* seuraava = nullptr) : _arvo(alustus_arvo), _seuraava(seuraava)
+	Viisari(unsigned int alustus_arvo, int maximi, Viisari* seuraava = nullptr) : _arvo(alustus_arvo), _max(maximi), _seuraava(seuraava)
 	{}
 
 	void Nayta() {
 		printf("%02d", _arvo);
 	}
 
-	void Etene() {
+	void Etene() {			
+		_arvo = (_arvo + 1) % _max;
+
 		if(_seuraava){
-			_arvo = (_arvo + 1) % 60;
 			_seuraava->Etene();
-		}
-		
-		else {
-			_arvo = (_arvo + 1) % 24;
 		}
 	}
 };
 
 //Tarkistetaan validi syöttö
-int onValilla(int merkki, unsigned a_raja, unsigned y_raja) {
+int onValilla(int merkki, int a_raja, int y_raja) {
 	if (merkki >= a_raja && merkki <= y_raja) {
 		return 1;
 	}
@@ -48,9 +47,9 @@ public:
 	// luodaan ja alustetaan viisarit sekä niiden seuraajat
 	Kello(int h, int m, int s) {
 		if (onValilla(h, 0, 23) && onValilla(m, 0, 59) && onValilla(s, 0, 59)) {
-			tunnit = new Viisari(h);
-			minuutit = new Viisari(m, tunnit);
-			sekunnit = new Viisari(s, minuutit);
+			tunnit = new Viisari(h, 24);
+			minuutit = new Viisari(m, 60, tunnit);
+			sekunnit = new Viisari(s, 60, minuutit);
 		}
 		else {
 			tunnit = nullptr;
