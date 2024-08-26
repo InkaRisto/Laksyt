@@ -19,7 +19,7 @@ void manage(int operations, bool isDeposit) {
 	for (int i = 0; i < operations; i++) {
 		float amt = static_cast<float>(rand() % 100);
 		
-		cout << "Amount gotten: " << amt << endl;
+		cout << "Amount gotten: \n" << amt << endl;
 
 		lock_guard<mutex> lock(mtx);
 		if (isDeposit) {
@@ -31,21 +31,18 @@ void manage(int operations, bool isDeposit) {
 			acc -= amt;
 		}
 
-		cout << "Balance: " << acc << endl;
+		cout << "Balance: \n" << acc << endl;
 
 	}
 }
 
 int main() {
 	srand(static_cast<unsigned>(time(0)));
-	int operations = 10000;
+	int operations = 100;
 	
 	//Two threads
 	thread add(manage, operations, true);
 	thread take(manage, operations, false);
-	
-	cout << "Threads done" << endl;
-
 
 	add.join();
 	take.join();
